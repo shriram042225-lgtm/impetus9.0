@@ -12,8 +12,7 @@ export default function Sponsors() {
     <div>
     
       <Hero />
-      <br />
-  
+      <br />  
       <WhySponsor />
       <br />
       <Credibility />

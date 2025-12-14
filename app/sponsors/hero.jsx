@@ -31,11 +31,8 @@ export default function Hero() {
         {/* <!-- Impetus watermark --> */}
         <div class="absolute inset-0 bg-[url('/impetus.png')] bg-center bg-no-repeat bg-contain opacity-[0.04]"></div>
 
-        {/* <!-- Abstract tech overlay --> */}
-        <div class="absolute inset-0 bg-[url('/impetus-logo.png')] bg-cover opacity-10"></div>
-
-        {/* <!-- Glow animation --> */}
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+      {/* Abstract tech overlay */}
+      <div className="absolute inset-0 bg-[url('/impetus-logo.png')] bg-cover bg-center opacity-10" />
 
         {/* <!-- Content --> */}
         <div class="relative z-10 flex items-center justify-center min-h-screen text-center text-white px-6">
