@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import { Eye, Users, Lightbulb, Handshake } from "lucide-react";
+
 import sponsorImg from "./impetus.jpg"; // replace with brand-stalls image if available
 
 export default function WhyPartnerSection() {
