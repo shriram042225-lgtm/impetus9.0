@@ -44,6 +44,7 @@ const sponsors = [
 
 export default function PastSponsors() {
   return (
+
     <div className="relative z-10 mx-auto max-w-7xl px-6">
       {/* Header */}
       <div className="mb-16 text-center">
@@ -75,5 +76,6 @@ export default function PastSponsors() {
         ))}
       </div>
     </div>
+
   );
 }

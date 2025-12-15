@@ -5,20 +5,20 @@ export default function Credibility() {
   return (
     <div>
       {/* Institution Credibility */}
-
+ 
       <section className="relative py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-center gap-12 md:grid-cols-2">
             {/* LEFT: TEXT */}
             <div>
               <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-cyan-400">
-                Institutional Legacy
+                Institutional Credibility
               </p>
 
               <h2 className="mb-6 text-3xl font-bold leading-tight text-white md:text-4xl">
-                Backed by a Legacy of
+                Powered by Legacy,
                 <br />
-                <span className="text-cyan-400">Excellence & Trust</span>
+                <span className="text-cyan-400">Trusted by Industry</span>
               </h2>
 
               <p className="text-lg leading-relaxed text-gray-300">
@@ -31,8 +31,19 @@ export default function Credibility() {
                 <span className="text-white">
                   top 12 NITs (NIRF Engineering 2025)
                 </span>
-                , it hosts a global alumni network and a legacy of academic and
-                technological excellence.
+                , it represents a legacy of academic excellence and a strong
+                global alumni network.
+              </p>
+
+              <p className="mt-5 text-lg leading-relaxed text-gray-300">
+                <span className="text-white">IMPETUS</span> also hosts flagship
+                <span className="text-white">
+                  {" "}
+                  industry–academia interactions
+                </span>
+                , enabling sponsors to engage directly with students,
+                researchers, and faculty through meaningful collaborations that
+                extend well beyond the event itself.
               </p>
             </div>
 
@@ -46,7 +57,7 @@ export default function Credibility() {
                 priority
               />
 
-              {/* subtle overlay for consistency */}
+              {/* subtle overlay */}
               <div className="absolute inset-0 bg-black/30" />
             </div>
           </div>
