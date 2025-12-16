@@ -17,8 +17,8 @@ export default function Sponsors() {
       <br />
       <Credibility />
       <br/>
-      <FlagshipEvent />
-      <br />
+      {/* <FlagshipEvent /> */}
+      {/* <br /> */}
       <SponsorshipTiers />
       <br />
       <Partnership />

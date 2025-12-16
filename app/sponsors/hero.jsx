@@ -5,6 +5,7 @@ export default function Hero() {
         <div className="max-w-2xl">
           <h1 className="mb-4 text-5xl font-bold">SPONSOR IMPETUS 9.0</h1>
 
+
           <h2 className="mb-3 text-xl font-semibold">
             Partner with Innovation & Shape the Future of Engineering
           </h2>
@@ -16,6 +17,7 @@ export default function Hero() {
           </p>
 
           <a
+
             href="/pdf/SponsorshipBrochure.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -54,4 +56,6 @@ export default function Hero() {
     </div>
   );
 }
+
+
 
