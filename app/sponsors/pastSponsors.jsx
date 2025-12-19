@@ -44,16 +44,37 @@ const sponsors = [
 
 export default function PastSponsors() {
   return (
+    <section className="relative py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-bold text-white md:text-4xl">
+            Our <span className="text-cyan-400">Past Sponsors</span>
+          </h2>
+          <p className="mt-4 text-gray-300">
+            Trusted by leading brands across previous editions of IMPETUS
+          </p>
+        </div>
 
-    <div className="relative z-10 mx-auto max-w-7xl px-6">
-      {/* Header */}
-      <div className="mb-16 text-center">
-        <h2 className="text-3xl font-bold text-white md:text-4xl">
-          Our <span className="text-cyan-400">Past Sponsors</span>
-        </h2>
-        <p className="mt-4 text-gray-300">
-          Trusted by leading brands across previous editions of IMPETUS
-        </p>
+        {/* Logo Grid */}
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {sponsors.map((sponsor, index) => (
+            <div
+              key={index}
+              className="group flex h-28 items-center justify-center rounded-2xl
+                 bg-white p-6 shadow-md
+                 transition-all duration-300 ease-out
+                 hover:scale-[1.05] hover:shadow-xl"
+            >
+              <Image
+                src={sponsor.logo}
+                alt={sponsor.name}
+                priority={index < 6}
+                className="h-25 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Logo Grid */}
@@ -75,7 +96,6 @@ export default function PastSponsors() {
           </div>
         ))}
       </div>
-    </div>
-
+    </section>
   );
 }

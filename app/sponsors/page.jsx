@@ -15,17 +15,17 @@ export default function Sponsors() {
       <br />  
       <WhySponsor />
       <br />
-      <Credibility />
+      {/* <Credibility /> */}
       <br/>
       {/* <FlagshipEvent /> */}
       {/* <br /> */}
-      <SponsorshipTiers />
+      {/* <SponsorshipTiers /> */}
       <br />
-      <Partnership />
+      {/* <Partnership /> */}
       <br/>
       <PastSponsors />
       <br />
-      <Final />
+      {/* <Final /> */}
     </div>
   );
 }
