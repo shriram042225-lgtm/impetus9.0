@@ -3,16 +3,16 @@ import { Orbitron, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const orbitron = Orbitron({ 
-  subsets: ["latin"], 
+const orbitron = Orbitron({
+  subsets: ["latin"],
   variable: "--font-orbitron",
-  display: "swap" 
+  display: "swap",
 });
 
-const montserrat = Montserrat({ 
-  subsets: ["latin"], 
-  variable: "--font-montserrat", 
-  display: "swap" 
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${orbitron.variable} ${montserrat.variable} bg-black text-white antialiased`}>
+      <body
+        className={`${orbitron.variable} ${montserrat.variable} bg-black text-white antialiased`}
+      >
         <Navbar />
         {children}
       </body>
