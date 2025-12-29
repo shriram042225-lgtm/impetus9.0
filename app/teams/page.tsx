@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ContactCard from "@/components/ContactCard";
+import ContactCard, { TeamMember } from "@/components/ContactCard";
 import { teamsData } from "@/data/teams";
 
 export default function TeamPage() {
@@ -187,7 +187,7 @@ export default function TeamPage() {
           >
             {/* SECTION 1: HEADS */}
             <div className="flex flex-wrap justify-center gap-16 mb-24">
-              {heads.map((person, idx) => (
+              {heads.map((person: TeamMember, idx: number) => (
                 <ContactCard key={`head-${idx}`} person={person} />
               ))}
             </div>

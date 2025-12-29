@@ -1,8 +1,20 @@
 "use client";
 import Image from "next/image";
 import { Instagram, Linkedin, Phone } from "lucide-react";
+export interface TeamMember {
+  name: string;
+  post: string;
+  imgname: string;
+  phone: string;
+  insta?: string;
+  link?: string;
+}
 
-const ContactCard = ({ person }) => {
+interface ContactCardProps {
+  person: TeamMember;
+}
+
+const ContactCard = ({ person }: ContactCardProps) => {
   return (
     <div className="group relative w-[240px] bg-zinc-950 border border-zinc-900 overflow-hidden transition-all duration-500 hover:border-white/40">
       {/* Profile Image - No Padding */}

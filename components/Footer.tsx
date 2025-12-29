@@ -78,8 +78,11 @@ const Footer = () => {
 };
 
 // --- Components ---
-
-const SocialIcon = ({ href, icon }) => (
+interface SocialIconProps {
+  href: string;
+  icon: React.ReactNode;
+}
+const SocialIcon = ({ href, icon }: SocialIconProps) => (
   <a
     href={href}
     target="_blank"
@@ -89,8 +92,11 @@ const SocialIcon = ({ href, icon }) => (
     {icon}
   </a>
 );
-
-const CoordinatorRow = ({ name, phone }) => (
+interface CoordinatorRowProps {
+  name: string;
+  phone: string;
+}
+const CoordinatorRow = ({ name, phone }: CoordinatorRowProps) => (
   /* Mobile: flex-row + justify-between ensures Name is far left, Phone is far right.
      Desktop: md:flex-row + justify-end + gap-3 keeps them together on the right.
   */
