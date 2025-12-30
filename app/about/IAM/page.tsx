@@ -11,6 +11,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import TakeawayTimeline from "../components/TkeawayTimeline";
 import BenifitsTimeline from "../components/BenifitsTimeline";
 
+
 const aim = [
   {
     head: "Interactive Industry-Academia Engagement",
@@ -67,6 +68,37 @@ const speakersNew = [
   } */
 ];
 const speakers = [
+  {
+    name: "Dr.Sudeb Datta",
+    description: "Technical Director water and gas utilities, M.N. Dastur",
+    img: "sudebDutta.jpeg",
+  },
+  {
+    name: "Amar Misra",
+    description: "Chief Shared Services, Tata Steel",
+    img: "amar.jpeg",
+  },
+  {
+    name: "Arkadeb Banerjee",
+    description: "Scientist F at DRDO ",
+    img: "arkadeep.jpeg",
+  },
+  {
+    name: "Swapan Kumar Mondal",
+    description: "Top Educator at Unacademy",
+    img: "skMondal.jpeg",
+  },
+  {
+    name: "Ramanuj Bhattacharya",
+    description: "Joint General Manager, MoD, ‎ Government of India",
+    img: "ramanuj.jpeg",
+  },
+
+  {
+    name: "Sarbajit Rakshit",
+    description: "Master Innovator At IBM",
+    img: "rakshit.jpeg",
+  },
   {
     name: "Debajyoti Dhar",
     description: "Deputy Director, Space Application Center, Ahmedabad (ISRO)",
@@ -580,8 +612,7 @@ export default function IAMPage() {
           Past Sponsors
         </h1>
         <Box className="cards" style={{ width: "100%" }}>
-          <SponsorCard sponsor={sponsor.sponsor1} isDimmed={true} />
-          <SponsorCard sponsor={sponsor.sponsor2} isDimmed={false} />
+          <SponsorCard/>
         </Box>
         <Box
           sx={{
