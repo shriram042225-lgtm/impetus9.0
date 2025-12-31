@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnchorWheel from "@/components/AnchorWheels";
 import BentoGrid from "@/components/BentoGrid";
+=======
+'use client';
+import Loading from "@/components/Loading";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import AnchorWheel from '@/components/AnchorWheels';
+import BentoGrid from '@/components/BentoGrid';
+
+>>>>>>> upstream/master
 const eras = [
   {
     id: "mechanism",
@@ -40,8 +50,25 @@ const eras = [
 ];
 
 export default function HeroSection() {
+  // 1. All Hooks must be declared at the top level first
   const [currentEraIndex, setCurrentEraIndex] = useState(0);
+  const [showSplash, setShowSplash] = useState(true);
 
+  // Hook 1: Splash Logic
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem("hasVisitedImpetus");
+    if (hasVisited) {
+      setShowSplash(false);
+    } else {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+        sessionStorage.setItem("hasVisitedImpetus", "true");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // Hook 2: Era Interval Logic (Moved UP before the return)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentEraIndex((prev) => (prev + 1) % eras.length);
@@ -49,12 +76,18 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
+  // 2. NOW you can do conditional returns
+  if (showSplash) {
+    return <Loading />;
+  }
+
   const currentEra = eras[currentEraIndex];
 
   import Sponsors from "./sponsors/page.jsx";
 
   return (
     <main className="w-full bg-black text-white">
+<<<<<<< HEAD
       <div className="relative w-full h-screen overflow-hidden bg-black text-white">
         {/* Background Gradient Transition */}
         <AnimatePresence mode="wait">
@@ -74,12 +107,36 @@ export default function HeroSection() {
 
         {/* Main Content */}
         <div className="relative z-10 flex items-center justify-center h-full w-full px-4 mt-6">
+=======
+      <div className="relative w-full h-screen md:bottom-0 bottom-10 overflow-hidden bg-black text-white">
+
+        {/* Background Gradient Transition */}
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={currentEra.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+            className={`absolute inset-0 bg-gradient-to-br ${currentEra.colors} opacity-60`}
+          />
+        </AnimatePresence>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/90" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+        {/* Main Content */}
+        <div className="relative z-10 flex items-center justify-center h-full w-full px-4 mt-6">
+          
+>>>>>>> upstream/master
           {/* Spinning Wheel Background */}
           <div className="absolute inset-0 mb-4 flex items-center justify-center">
             <div className="scale-[1.6] opacity-20">
               <AnchorWheel eraIndex={currentEraIndex} />
             </div>
           </div>
+<<<<<<< HEAD
 
           {/* Text Content */}
           <motion.div
@@ -150,6 +207,64 @@ export default function HeroSection() {
           </svg>
         </div>
       </div>
+=======
+
+          {/* Text Content */}
+          <motion.div
+            key={currentEra.label}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative z-20 text-center flex flex-col items-center"
+          >
+            {/* Main Title */}
+            <h1 className="text-6xl md:text-9xl font-extrabold tracking-tighter flex items-baseline gap-4 justify-center">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">
+                IMPETUS
+              </span>
+              <span className={`text-4xl md:text-8xl ${currentEra.accent}`}>
+                9.0
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <h3 className="text-sm md:text-base font-bold tracking-[0.3em] uppercase mt-2 text-white/70">
+              Chronicles of Innovation
+            </h3>
+
+            {/* Date and Location */}
+            <div className="flex items-center gap-3 md:gap-4 mt-3 text-xs md:text-sm font-medium tracking-wider text-white/80">
+              <span>IIEST Shibpur</span>
+              <span className={`w-1.5 h-1.5 rounded-full ${currentEra.dot} shadow-[0_0_10px_currentColor]`}></span>
+              <span>13th - 15th February</span>
+            </div>
+
+            {/* Changing Era Text */}
+            <p className={`text-lg md:text-xl mt-12 font-medium tracking-widest uppercase ${currentEra.accent}`}>
+              {currentEra.subtext}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll Down Indicator */}
+        <div className="absolute bottom-25 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 animate-bounce pointer-events-none select-none">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-white/50 font-medium">
+            Scroll Down
+          </span>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            strokeWidth={1.5} 
+            stroke="currentColor" 
+            className="w-5 h-5 text-white/70"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+      </div> 
+>>>>>>> upstream/master
       <BentoGrid />
     </main>
   );

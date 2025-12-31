@@ -28,4 +28,11 @@ export default function Hero() {
 </div>
 </div>
   );
+<<<<<<< HEAD
 }
+=======
+
+}
+
+
+>>>>>>> upstream/master

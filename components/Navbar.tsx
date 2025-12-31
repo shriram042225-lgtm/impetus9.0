@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* --- DESKTOP NAVBAR (Floating Pill) --- */}
       <nav
         className="
-          h-15
+          h-15 z-100
           bg-white/10 
           backdrop-blur-xl 
           border border-white/20 
