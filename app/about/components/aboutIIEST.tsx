@@ -28,7 +28,7 @@ export default function AboutIIEST() {
           </h1>
 
           <h2 className="mt-2 text-sm md:text-xl tracking-[0.3em] uppercase text-amber-500">
-            169 Years of Excellence
+            170 Years of Excellence
           </h2>
 
           {/* Timeline */}
