@@ -50,7 +50,6 @@ export default function ThemeReveal({ targetDate, onUnlock }) {
     minutes: 0,
     seconds: 0,
   });
-
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date().getTime();

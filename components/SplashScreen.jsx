@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function SplashScreen({ onComplete }) {
   // We use a separate state to control the exit animation before unmounting
   const [isVisible, setIsVisible] = useState(true);
-
   // Customize for Impetus
   const title = "IMPETUS 9.0";
   const subtitle = "IIEST SHIBPUR";
