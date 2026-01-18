@@ -26,11 +26,11 @@ export default function BentoGrid() {
                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50 group-hover:opacity-60"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                  <div className="relative z-10 mt-auto">
+                  <div className="relative z-10 mt-auto font-nunito">
                      <span className="inline-block px-3 py-1 bg-blue-900/30 text-blue-200 rounded-full text-xs font-bold mb-3 border border-blue-500/20">
                         EST. 1856
                      </span>
-                     <h3 className="text-2xl font-bold leading-tight text-white">
+                     <h3 className="text-2xl font-bold leading-tight text-white ">
                         IIEST, Shibpur
                      </h3>
                      <p className="text-zinc-400 text-xs mt-3 leading-relaxed border-t border-white/10 pt-3">
@@ -82,7 +82,7 @@ export default function BentoGrid() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10 mt-auto text-left">
-                     <h3 className="text-[22px] font-bold leading-tight text-white">
+                     <h3 className="text-[20px] font-bold leading-tight text-white">
                         Industry Academia Meet
                      </h3>
                      <p className="text-sm md:text-base text-zinc-500 font-medium">
@@ -104,7 +104,7 @@ export default function BentoGrid() {
                      className="w-full max-w-[240px] py-4 bg-yellow-500 hover:bg-yellow-400 text-black rounded-full flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:shadow-[0_0_30px_rgba(234,179,8,0.6)] group px-14"
                   >
                      <span className="text-[15px] font-black italic tracking-tight uppercase whitespace-nowrap">
-                        Want to Sponsor Us?
+                        Want to Sponsor?
                      </span>
                      <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" strokeWidth={3} />
                   </a>

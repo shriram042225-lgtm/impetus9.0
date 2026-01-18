@@ -20,6 +20,7 @@ export default function CascadingEventsPage() {
         body { -ms-overflow-style: none; scrollbar-width: none; }
         html { scroll-behavior: smooth; }
       `}</style>
+      
       <section className="relative z-10 pb-2 border-b border-zinc-900/50">
          <PreEventsCard />
       </section>

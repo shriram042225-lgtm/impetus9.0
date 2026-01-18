@@ -71,15 +71,6 @@ const sponsors = [
 export default function PastSponsors() {
   return (
     <div className="relative z-10 mx-auto max-w-7xl px-6">
-      {/* Header */}
-      <div className="mb-16 text-center">
-        <h2 className="text-3xl font-bold text-white md:text-4xl">
-          Our <span className="text-cyan-400">Past Sponsors</span>
-        </h2>
-        <p className="mt-4 text-gray-300">
-          Trusted by leading brands across previous editions of IMPETUS
-        </p>
-      </div>
 
       {/* Logo Grid */}
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">

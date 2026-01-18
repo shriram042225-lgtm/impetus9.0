@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Montserrat,Inter, Bebas_Neue, Roboto, Rowdies, Nunito } from "next/font/google";
 import "./globals.css";
-
+import { EraProvider } from "../context/EraContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -42,7 +42,7 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Impetus 9.0 | Chronicles of Innovation",
+  title: "Impetus 9.0 | {%$theme$%}",
   description: "IIEST Shibpur's Annual Tech Fest",
 };
 
@@ -54,11 +54,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${orbitron.variable} ${montserrat.variable} ${inter.className} ${bebas.variable} ${roboto.variable} ${rowdies.variable} ${nunito.variable}bg-black text-white antialiased`}
-      >
+  className={`
+    ${orbitron.variable}
+    ${montserrat.variable}
+    ${bebas.variable}
+    ${roboto.variable}
+    ${rowdies.variable}
+    ${nunito.variable}
+    font-body
+    bg-black
+    text-white
+    antialiased
+  `}
+>
+
+       <EraProvider>
         <Navbar />
         {children}
         <Footer />
+        </EraProvider>
       </body>
     </html>
   );

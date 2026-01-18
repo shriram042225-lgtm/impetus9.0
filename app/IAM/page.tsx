@@ -107,13 +107,15 @@ const speakers = [
 
 export default function IAMPage() {
   return (
-    <section >
+    <main className="bg-black min-h-screen relative overflow-hidden">
+      
+      <div className="relative z-10">
+        <section >
       <div className="mt-30 ml-2">
-      <CarouselComp /></div>
-
+        <CarouselComp /></div>
       <div className="relative z-10 mx-auto max-w-screen-xl px-6 pt-12 md:pt-8 text-center">
-  <h1
-    className="
+        <h1
+          className="
       font-display
       font-bold
       text-xl
@@ -123,30 +125,15 @@ export default function IAMPage() {
       text-gray-100
       whitespace-nowrap
     "
-  >
-    INDUSTRY–ACADEMIA MEET
-  </h1>
+        >
+          INDUSTRY–ACADEMIA MEET
+        </h1>
 
-  <p className="font-body mt-3 text-sm sm:text-base md:text-lg tracking-wide text-gray-400">
-    12 February 2025 • 9:00 AM – 6:00 PM
-  </p>
-</div>
-
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "40px", // equivalent to gap: 10 (theme spacing) roughly
-          paddingTop: "64px",
-          marginTop: "32px",
-          paddingLeft: "32px",
-          paddingRight: "32px",
-          maxWidth: "1200px",
-          zIndex: 10,
-          position: "relative",
-        }}
-      >
+        <p className="font-body mt-3 text-sm sm:text-base md:text-lg tracking-wide text-gray-400">
+          12 February 2025 • 9:00 AM – 6:00 PM
+        </p>
+      </div>
+      <div className="relative z-10 mx-auto mt-8 max-w-screen-xl px-6 pt-16 flex flex-col gap-10">
         {/* Intro Section 1 */}
         <div>
           <h2
@@ -435,5 +422,7 @@ export default function IAMPage() {
         </div>
       </div>
     </section>
+    </div>
+    </main>
   );
 }

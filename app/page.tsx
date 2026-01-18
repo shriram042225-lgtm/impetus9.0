@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useEra } from "@/context/EraContext";
 import Loading from "@/components/Loading";
 import AnchorWheel from "@/components/AnchorWheels";
 import BentoGrid from "@/components/BentoGrid";
@@ -43,7 +43,7 @@ const eras = [
 ];
 
 export default function HeroSection() {
-  const [currentEraIndex, setCurrentEraIndex] = useState(0);
+  const { currentEraIndex, setCurrentEraIndex } = useEra();
   const [showSplash, setShowSplash] = useState(true);
 
   /* Splash Screen Logic */
@@ -58,14 +58,6 @@ export default function HeroSection() {
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, []);
-
-  /* Era Auto-Rotation */
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentEraIndex((prev) => (prev + 1) % eras.length);
-    }, 4000);
-    return () => clearInterval(interval);
   }, []);
 
   if (showSplash) {
