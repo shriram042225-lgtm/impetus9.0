@@ -10,10 +10,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // You can keep standard extensions here, but 
-      // REMOVE fontFamily, colors, and animation 
-      // since they are now in globals.css
-      
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },

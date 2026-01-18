@@ -12,9 +12,9 @@ export default function BentoGrid() {
                   <span className="font-mono text-xs text-zinc-500 uppercase tracking-wider md:text-sm">IMPETUS 9.0</span>
                   <span className="mx-2 text-zinc-700 md:mx-3">-</span>
                   <span className="font-bold text-zinc-100">Annual Technical Fest</span>
-                  <span className="ml-1 text-zinc-500"> organised by </span>
-                  <span className="block font-medium text-zinc-400 sm:inline sm:ml-1.5">
-                     the Department of Mechanical Engineering, IIEST Shibpur
+                  <span className="ml-1 text-zinc-500"> organised by</span>
+                  <span className="font-nunito block font-medium text-zinc-400 sm:inline sm:ml-1.5">
+                   the Department of Mechanical Engineering, IIEST Shibpur
                   </span>
                </h2>
             </div>
@@ -54,7 +54,7 @@ export default function BentoGrid() {
                <SlideshowCard />
 
                <div className="md:col-span-1 md:row-span-1 row-span-4 relative group overflow-hidden rounded-3xl border border-zinc-800 p-6 flex flex-col justify-between">
-                  <div className="absolute inset-0 flex items-start justify-center md:pt-2 pt-1 opacity-100">
+                  <div className="absolute inset-0 flex items-start justify-center md:pt-2 pt-1 opacity-100 ">
                      <img
                         src="/SME.png"
                         alt="SME Logo"
@@ -62,7 +62,7 @@ export default function BentoGrid() {
                      />
                   </div>
                   <div className="relative z-10 mt-auto text-left">
-                     <h3 className="text-[20px] font-bold leading-tight text-white">
+                     <h3 className="text-[20px] font-bold leading-tight text-white font-nunito">
                         Society of Mechanical Engineers, IIEST Shibpur
                      </h3>
                      <a
@@ -82,10 +82,10 @@ export default function BentoGrid() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                   <div className="relative z-10 mt-auto text-left">
-                     <h3 className="text-[20px] font-bold leading-tight text-white">
+                     <h3 className="font-nunito text-[20px] font-bold leading-tight text-white">
                         Industry Academia Meet
                      </h3>
-                     <p className="text-sm md:text-base text-zinc-500 font-medium">
+                     <p className="font-nunito text-sm md:text-base text-zinc-500 font-medium">
                         Flagship Event Of IMPETUS.
                      </p>
                      <a

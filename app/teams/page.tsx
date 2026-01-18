@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ContactCard, { TeamMember } from "@/components/ContactCard";
 import { teamsData } from "@/data/teams";
-
+import UnderConstruction from "@/components/UnderConstruction";
 export default function TeamPage() {
   const [value, setValue] = useState(0);
   const [mobileSelected, setMobileSelected] = useState(false);
@@ -29,7 +29,22 @@ export default function TeamPage() {
       !m.post.toLowerCase().includes("head") &&
       m.post.toLowerCase() !== "coordinator"
   );
-
+  const [isUnlocked, setIsUnlocked] = useState(false);
+    const handleUnlock = () => {
+      setIsUnlocked(true);
+      sessionStorage.setItem("events_page_unlocked", "true");
+      alert("Developer Mode: Unlocked"); // Optional feedback
+    };
+    if (!isUnlocked) {
+      return (
+        <UnderConstruction 
+          title="Work under progress"
+          subtitle="Almost ready! Check back soon"
+          progress={75} 
+          onSecretUnlock={handleUnlock} // Pass the function here
+        />
+      );
+    }
   return (
     <div className="bg-black min-h-screen pb-32">
       

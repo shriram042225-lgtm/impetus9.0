@@ -6,7 +6,8 @@ import { useEra } from "@/context/EraContext";
 import Loading from "@/components/Loading";
 import AnchorWheel from "@/components/AnchorWheels";
 import BentoGrid from "@/components/BentoGrid";
-
+import ThemeReveal from "@/components/ThemeReveal"; 
+const TARGET_DATE = new Date("2026-02-08T10:00:00");
 const eras = [
   {
     id: "mechanism",
@@ -45,7 +46,7 @@ const eras = [
 export default function HeroSection() {
   const { currentEraIndex, setCurrentEraIndex } = useEra();
   const [showSplash, setShowSplash] = useState(true);
-
+  const [isLocked, setIsLocked] = useState(() => new Date() < TARGET_DATE);
   /* Splash Screen Logic */
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("hasVisitedImpetus");
@@ -69,6 +70,15 @@ export default function HeroSection() {
   return (
     <main className="w-full bg-black text-white">
       <div className="relative w-full h-screen overflow-hidden">
+        {/* AnimatePresence ensures the exit animation plays when isLocked becomes false */}
+      <AnimatePresence>
+        {isLocked && (
+          <ThemeReveal 
+            targetDate={TARGET_DATE} 
+            onUnlock={() => setIsLocked(false)} 
+          />
+        )}
+      </AnimatePresence>
         {/* Background Gradient */}
         <AnimatePresence mode="wait">
           <motion.div

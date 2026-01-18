@@ -41,10 +41,10 @@ export default function SlideshowCard() {
          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent pointer-events-none" />
          <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-               <h3 className="text-3xl md:text-4xl font-bold text-white mb-1 tracking-tight">
+               <h3 className="font-nunito text-3xl md:text-4xl font-bold text-white mb-1 tracking-tight">
                   IMPETUS 8.0
                </h3>
-               <p className="text-sm md:text-base text-zinc-500 font-medium">
+               <p className="font-nunito text-sm md:text-base text-zinc-500 font-medium">
                   A look back at our past success.
                </p>
             </div>

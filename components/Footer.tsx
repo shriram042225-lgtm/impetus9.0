@@ -43,7 +43,7 @@ const Footer = () => {
               className="group relative px-8 py-4 rounded-full bg-white/5 border border-white/10 overflow-hidden transition-all hover:border-blue-500/50 hover:bg-blue-900/10 shadow-lg"
             >
               <div className="absolute inset-0 w-0 bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:w-full group-hover:animate-shine" />
-              <div className="flex items-center gap-3 text-base font-medium text-gray-300 group-hover:text-white">
+              <div className="font-orbitron flex items-center gap-3 text-base font-medium text-gray-300 group-hover:text-white">
                 <span>Meet the Team</span>
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -61,11 +61,11 @@ const Footer = () => {
 
           {/* 3. COORDINATORS BLOCK */}
           <div className="flex flex-col items-center md:items-end space-y-3 mb-0 md:mb-7 order-2 md:order-3 w-full md:w-auto">
-             <h3 className="text-xs font-bold tracking-widest text-blue-500 uppercase mb-2">
+             <h3 className="font-orbitron text-xs font-bold tracking-widest text-blue-500 uppercase mb-2">
                 Main Coordinators
              </h3>
              {/* Container for the two lines */}
-             <div className="w-full max-w-[300px] md:max-w-none space-y-2 md:space-y-3 px-2">
+             <div className="font-montserrat w-full max-w-[300px] md:max-w-none space-y-2 md:space-y-3 px-2">
                 <CoordinatorRow name="Akshat Gupta" phone="+91 7548071485" />
                 <CoordinatorRow name="Akash S" phone="+91 9444265824" />
              </div>

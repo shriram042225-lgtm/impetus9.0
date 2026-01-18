@@ -20,10 +20,10 @@ export default function Loading() {
       
       {/* 1. The Image */}
       {/* Make sure loading.gif is inside your public/images/ folder */}
-      <div className="relative w-[300px] h-[300px] mb-4">
+      <div className="font-rowdies relative w-[300px] h-[300px] mb-4">
         <Image
           src="/loading.gif"
-          alt="Loading..."
+          alt="..."
           fill
           className="object-contain"
           priority // Loads immediately

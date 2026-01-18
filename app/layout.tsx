@@ -4,7 +4,7 @@ import "./globals.css";
 import { EraProvider } from "../context/EraContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import SplashScreen from "@/components/SplashScreen";
 const inter = Inter({ subsets: ["latin"] });
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -54,6 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${orbitron.variable} ${montserrat.variable} ${inter.className} ${bebas.variable} ${roboto.variable} ${rowdies.variable} ${nunito.variable} bg-black text-white antialiased`}>
+        <SplashScreen />
        <EraProvider>
         <Navbar />
         {children}

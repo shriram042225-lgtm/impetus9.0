@@ -7,12 +7,27 @@ import { eventsData } from "@/data/events";
 import EventRegistrationForm from "@/components/EventRegistrationForm";
 import PreEventsCard from "@/components/PreEventsCard";
 import { createPortal } from "react-dom";
-
+import UnderConstruction from "@/components/UnderConstruction";
 /* ---------------- PAGE ---------------- */
 export default function CascadingEventsPage() {
   const { scrollYProgress } = useScroll();
   const downOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const handleUnlock = () => {
+    setIsUnlocked(true);
+    sessionStorage.setItem("events_page_unlocked", "true");
+    alert("Developer Mode: Unlocked"); // Optional feedback
+  };
+  if (!isUnlocked) {
+    return (
+      <UnderConstruction 
+        title="Work under progress"
+        subtitle="Almost ready! Check back soon"
+        progress={75} 
+        onSecretUnlock={handleUnlock} // Pass the function here
+      />
+    );
+  }
   return (
     <div className="bg-black text-white min-h-screen relative">
       <style jsx global>{`
@@ -20,9 +35,9 @@ export default function CascadingEventsPage() {
         body { -ms-overflow-style: none; scrollbar-width: none; }
         html { scroll-behavior: smooth; }
       `}</style>
-      
+
       <section className="relative z-10 pb-2 border-b border-zinc-900/50">
-         <PreEventsCard />
+        <PreEventsCard />
       </section>
       <DaySection
         dayTitle={eventsData.day1.title}
@@ -49,7 +64,7 @@ export default function CascadingEventsPage() {
         >
           <ChevronDown size={24} />
         </motion.div>
-        
+
       </motion.div>
     </div>
   );
@@ -158,15 +173,13 @@ const DaySection = ({
       </div>
 
       <div
-        className={`flex ${
-          isReversed ? "flex-row-reverse" : "flex-row"
-        } relative z-10`}
+        className={`flex ${isReversed ? "flex-row-reverse" : "flex-row"
+          } relative z-10`}
       >
         {/* Timeline Container (Desktop) */}
         <div
-          className={`w-[15%] md:w-[20%] hidden md:flex relative ${
-            isReversed ? "items-start pl-6" : "items-start left-14"
-          }`}
+          className={`w-[15%] md:w-[20%] hidden md:flex relative ${isReversed ? "items-start pl-6" : "items-start left-14"
+            }`}
         >
           <div className="h-screen sticky top-0 flex flex-col justify-center w-full max-w-[220px]">
             <Timeline
@@ -217,7 +230,7 @@ const Timeline = ({
   const isLeft = side === "left";
 
   return (
-    <div 
+    <div
       className={`
         relative flex flex-col gap-16 
         ${isLeft ? "border-r pr-8 text-right items-end" : "border-l pl-8 text-left items-start"}
@@ -236,15 +249,15 @@ const Timeline = ({
             key={i}
             onClick={() => onSelect(i)}
             animate={{ opacity: isActive ? 1 : 0.3 }}
-            whileHover={{ 
-                scale: 1.2,                
-                x: isLeft ? -10 : 10,      
-                opacity: 1                 
+            whileHover={{
+              scale: 1.2,
+              x: isLeft ? -10 : 10,
+              opacity: 1
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className={`group cursor-pointer flex flex-col gap-1 ${isLeft ? "items-end" : "items-start"}`}
           >
-           <span
+            <span
               className={`block text-xs font-mono uppercase tracking-wider flex items-center gap-2 
                 ${isLeft ? "flex-row-reverse" : "flex-row"} 
                 ${isActive ? "text-yellow-500" : "text-zinc-600"} 
@@ -281,7 +294,7 @@ const Card = ({
   deadline
 }: any) => {
   const scale = useTransform(progress, range, [1, targetScale]);
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isClosed = new Date() > new Date(deadline);
 
@@ -289,18 +302,18 @@ const Card = ({
     <>
       {isModalOpen && typeof document !== "undefined" && createPortal(
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-           <EventRegistrationForm 
-              event={{ title, backendValue, teamSize }} 
-              onClose={() => setIsModalOpen(false)} 
-           />
+          <EventRegistrationForm
+            event={{ title, backendValue, teamSize }}
+            onClose={() => setIsModalOpen(false)}
+          />
         </div>,
         document.body
       )}
 
       <div className="min-h-screen flex items-start justify-center sticky top-0">
         <motion.div
-          style={{ 
-            scale, 
+          style={{
+            scale,
             backgroundColor: color,
             top: `calc(75px + ${i * 8}px)`, // Kept stacking logic identical
           }}
@@ -313,7 +326,7 @@ const Card = ({
           <div className="flex flex-col md:flex-row h-full">
             <div className="w-full h-[60%] md:h-full md:w-[45%] p-8 md:p-12 flex flex-col justify-between z-10 relative">
               <div>
-                 <div className="flex items-center gap-3 text-xs font-mono uppercase mb-6">
+                <div className="flex items-center gap-3 text-xs font-mono uppercase mb-6">
                   <span className="flex items-center gap-1 text-zinc-400">
                     <Calendar size={12} /> {date}
                   </span>
@@ -330,21 +343,21 @@ const Card = ({
                 <p className="text-zinc-400 text-base md:text-lg leading-relaxed line-clamp-4">
                   {description}
                 </p>
-                
+
                 <div className="mt-4 flex items-center gap-2 text-xs font-mono text-zinc-500 border border-zinc-700 w-fit px-2 py-1 rounded">
-                   <span>Team Size: {teamSize.min === teamSize.max ? teamSize.max : `${teamSize.min}-${teamSize.max}`}</span>
+                  <span>Team Size: {teamSize.min === teamSize.max ? teamSize.max : `${teamSize.min}-${teamSize.max}`}</span>
                 </div>
               </div>
 
               {isClosed ? (
-                <button 
-                  disabled 
+                <button
+                  disabled
                   className="w-fit bg-zinc-800 text-zinc-500 px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs cursor-not-allowed border border-zinc-700"
                 >
                   Registration Closed
                 </button>
               ) : (
-                <button 
+                <button
                   onClick={() => setIsModalOpen(true)}
                   className="w-fit flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-yellow-400 transition-colors"
                 >
@@ -354,14 +367,14 @@ const Card = ({
             </div>
 
             <div className="relative w-full md:w-[55%] h-[40%] md:h-full overflow-hidden group">
-               <div className="absolute inset-0 bg-zinc-900" />
-               <img
-                 src={src}
-                 alt={title}
-                 className="w-full h-full object-cover grayscale scale-105 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-black/60" />
-             </div>
+              <div className="absolute inset-0 bg-zinc-900" />
+              <img
+                src={src}
+                alt={title}
+                className="w-full h-full object-cover grayscale scale-105 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-black/60" />
+            </div>
           </div>
         </motion.div>
       </div>
