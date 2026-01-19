@@ -61,9 +61,7 @@ export default function HeroSection() {
     }
   }, []);
 
-  if (showSplash) {
-    return <Loading />;
-  }
+ 
 
   const currentEra = eras[currentEraIndex];
 

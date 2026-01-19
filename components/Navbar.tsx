@@ -126,15 +126,13 @@ export default function Navbar() {
           className={`
             md:hidden
             fixed bottom-24 right-6 z-50
-            w-40 py-3
+            w-35 py-3
             bg-black/80
             backdrop-blur-xl 
-            border ${currentBorderStyle}
             shadow-2xl
             rounded-2xl
             flex flex-col items-center gap-4
             animate-in slide-in-from-bottom-5 fade-in zoom-in-95 duration-200
-            font-roboto
           `}
         >
           {mobileDropdownLinks.map((link) => (
@@ -143,7 +141,7 @@ export default function Navbar() {
               href={link.href}
               onClick={closeMenu}
               className={`
-                text-white font-medium text-lg tracking-wide
+                text-white font-[1px] text-lg font-body tracking-wide
                 hover:${currentTextColor} transition-colors
               `}
             >
@@ -202,7 +200,7 @@ export default function Navbar() {
         >
           {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
           <span className="text-[10px] uppercase tracking-wider font-semibold">
-            {isMenuOpen ? "Close" : "Menu"}
+            {isMenuOpen ? "Close" : "More"}
           </span>
         </button>
       </div>
