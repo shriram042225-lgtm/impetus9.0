@@ -2,32 +2,15 @@
 
 import { useRef, useState } from "react";
 import { useScroll, useTransform, motion, MotionValue, useMotionValueEvent } from "framer-motion";
-import { ArrowUpRight, Calendar, Clock, ChevronDown } from "lucide-react";
+import { ArrowUpRight, Calendar, Clock, BookOpen, Users, ChevronDown, Trophy } from "lucide-react";
 import { eventsData } from "@/data/events";
 import EventRegistrationForm from "@/components/EventRegistrationForm";
 import PreEventsCard from "@/components/PreEventsCard";
 import { createPortal } from "react-dom";
-import UnderConstruction from "@/components/UnderConstruction";
 /* ---------------- PAGE ---------------- */
 export default function CascadingEventsPage() {
   const { scrollYProgress } = useScroll();
   const downOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const [isUnlocked, setIsUnlocked] = useState(false);
-  const handleUnlock = () => {
-    setIsUnlocked(true);
-    sessionStorage.setItem("events_page_unlocked", "true");
-    alert("Developer Mode: Unlocked"); // Optional feedback
-  };
-  if (!isUnlocked) {
-    return (
-      <UnderConstruction 
-        title="Work under progress"
-        subtitle="Almost ready! Check back soon"
-        progress={75} 
-        onSecretUnlock={handleUnlock} // Pass the function here
-      />
-    );
-  }
   return (
     <div className="bg-black text-white min-h-screen relative">
       <style jsx global>{`
@@ -144,11 +127,6 @@ const DaySection = ({
           />
         ))}
       </div>
-
-      {/* ------------------------------------------------
-        UPDATED STICKY HEADER WITH MOBILE INDICATOR
-        ------------------------------------------------
-      */}
       <div className="sticky top-4 md:top-20 z-30 flex flex-col items-center pointer-events-none">
         {/* Title Badge */}
         <span className="bg-white/10 backdrop-blur-md px-6 py-2 rounded-full text-sm font-mono uppercase tracking-widest text-white border border-white/10 shadow-lg mb-2">
@@ -276,7 +254,6 @@ const Timeline = ({
     </div>
   );
 };
-
 /* ---------------- CARD COMPONENT ---------------- */
 const Card = ({
   i,
@@ -291,13 +268,14 @@ const Card = ({
   targetScale,
   backendValue,
   teamSize,
-  deadline
-}: any) => {
+  deadline,
+  coordinators,
+  rulebook,
+  prizepool
+}: { coordinators: string[] } & any) => {
   const scale = useTransform(progress, range, [1, targetScale]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isClosed = new Date() > new Date(deadline);
-
   return (
     <>
       {isModalOpen && typeof document !== "undefined" && createPortal(
@@ -315,65 +293,106 @@ const Card = ({
           style={{
             scale,
             backgroundColor: color,
-            top: `calc(75px + ${i * 8}px)`, // Kept stacking logic identical
+            top: `calc(75px + ${i * 15}px)`,
           }}
-          /* CHANGE 2: Card Height
-            - h-[75vh]: Makes cards 75% of screen height on Mobile (Taller)
-            - md:h-[580px]: Keeps them fixed size on Laptop (Unchanged)
-          */
           className="relative w-full max-w-4xl h-[85vh] md:h-[580px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl origin-top"
         >
           <div className="flex flex-col md:flex-row h-full">
-            <div className="w-full h-[60%] md:h-full md:w-[45%] p-8 md:p-12 flex flex-col justify-between z-10 relative">
-              <div>
-                <div className="flex items-center gap-3 text-xs font-mono uppercase mb-6">
-                  <span className="flex items-center gap-1 text-zinc-400">
-                    <Calendar size={12} /> {date}
-                  </span>
-                  <span className="w-1 h-1 bg-zinc-700 rounded-full" />
-                  <span className="flex items-center gap-1 text-yellow-500">
-                    <Clock size={12} /> {time}
-                  </span>
-                </div>
 
-                <h2 className="text-4xl md:text-5xl font-black uppercase leading-[0.9] mb-6 text-white">
-                  {title}
-                </h2>
+            {/* --- LEFT COLUMN: TEXT CONTENT --- */}
+            <div className="w-full h-[70%] md:h-full md:w-[60%] p-6 md:p-10 flex flex-col z-10 relative">
 
-                <p className="text-zinc-400 text-base md:text-lg leading-relaxed line-clamp-4">
-                  {description}
-                </p>
-
-                <div className="mt-4 flex items-center gap-2 text-xs font-mono text-zinc-500 border border-zinc-700 w-fit px-2 py-1 rounded">
-                  <span>Team Size: {teamSize.min === teamSize.max ? teamSize.max : `${teamSize.min}-${teamSize.max}`}</span>
-                </div>
+              {/* Header */}
+              <div className="flex flex-wrap items-center gap-3 text-xs font-mono uppercase mb-4 shrink-0">
+                <span className="flex items-center gap-1 text-zinc-400">
+                  <Calendar size={12} /> {date}
+                </span>
+                <span className="w-1 h-1 bg-zinc-700 rounded-full" />
+                <span className="flex items-center gap-1 text-yellow-500">
+                  <Clock size={12} /> {time}
+                </span>
+                <span className="w-1 h-1 bg-zinc-700 rounded-full" />
+                <span className="text-zinc-500 border border-zinc-700 px-1.5 py-0.5 rounded">
+                  Team: {teamSize.min === teamSize.max ? teamSize.max : `${teamSize.min}-${teamSize.max}`}
+                </span>
               </div>
 
-              {isClosed ? (
-                <button
-                  disabled
-                  className="w-fit bg-zinc-800 text-zinc-500 px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs cursor-not-allowed border border-zinc-700"
-                >
-                  Registration Closed
-                </button>
-              ) : (
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-fit flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-yellow-400 transition-colors"
-                >
-                  Register <ArrowUpRight size={16} />
-                </button>
-              )}
+              {/* Title */}
+              <h2 className="text-4xl md:text-5xl font-black uppercase leading-[0.9] mb-4 text-white shrink-0">
+                {title}
+              </h2>
+
+              {/* Main Content Area */}
+              <div className="flex-1 flex flex-col min-h-0 mb-4">
+
+                {/* Description (80% Height) */}
+                <div className="flex-[0.8] overflow-y-auto pr-2 custom-scrollbar relative">
+                  <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
+                    {description}
+                  </p>
+
+                  {rulebook && (
+                    <a
+                      href={rulebook}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-[10px] font-bold uppercase tracking-wider rounded border border-zinc-700 transition-colors"
+                    >
+                      <BookOpen size={10} /> View Rulebook
+                    </a>
+                  )}
+                </div>
+                {/* Coordinators (20% height) */}
+                <div className="flex-[0.2] flex flex-col items-end overflow-y-auto pr-2 custom-scrollbar relative">
+                  <p className="text-zinc-100 text-[8px] md:text-[15px] leading-relaxed text-right">
+                    COORDINATORS
+                  </p>
+                  {coordinators && coordinators.map((coordinator: string, index: number) => (
+                    <div key={index} className="flex font-nunito text-zinc-500 text-[12px] text-right">
+                      {coordinator}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Footer */}
+              <div className="shrink-0 mt-auto flex items-center gap-4">
+                {isClosed ? (
+                  <button
+                    disabled
+                    className="w-fit bg-zinc-800 text-zinc-500 px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs cursor-not-allowed border border-zinc-700"
+                  >
+                    Closed
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="w-fit flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-yellow-400 transition-colors"
+                  >
+                    Register <ArrowUpRight size={16} />
+                  </button>
+                )}
+
+                {prizepool && (
+                  <div className="flex items-center gap-2 text-yellow-500 font-mono text-sm font-bold bg-yellow-500/10 px-3 py-2 rounded-full border border-yellow-500/20">
+                    <Trophy size={14} />
+                    <span>{prizepool}</span>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="relative w-full md:w-[55%] h-[40%] md:h-full overflow-hidden group">
+            {/* --- RIGHT COLUMN: IMAGE --- */}
+            <div className="relative w-full h-[30%] md:h-full md:w-[45%] overflow-hidden group">
               <div className="absolute inset-0 bg-zinc-900" />
               <img
                 src={src}
                 alt={title}
-                className="w-full h-full object-cover grayscale scale-105 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                className="w-full h-full object-cover md:grayscale scale-105 group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700 ease-in-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-black/60" />
+              {/* GRADIENTS */}
+              <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-10" />
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent z-10" />
             </div>
           </div>
         </motion.div>

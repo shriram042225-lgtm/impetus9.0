@@ -200,7 +200,7 @@ export const FormFooter = () => {
         <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex items-center justify-between h-[88px]">
 
             {/* LEFT SIDE: CAPTCHA (Only shows if Team Size is GREEN and on Last Step) */}
-            <div className="flex-1 flex justify-start">
+            <div className="flex-1 flex md:mr-0 -mr-20 justify-start">
                 {isLastStep && isTeamValid && (
                     <motion.div
                         initial={{ opacity: 0, x: -10 }}

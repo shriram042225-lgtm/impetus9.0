@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/sponsors/whySponsor.jsx", "app/sponsors/sponsorshipTiers.jsx", "app/sponsors/pastSponsors.jsx", "app/sponsors/partnership.jsx", "app/sponsors/page.tsx", "app/sponsors/hero.jsx", "app/sponsors/flagshipEvent.jsx", "app/sponsors/final.jsx", "app/sponsors/credibility.jsx", "components/SplashScreen.jsx"  ],
+, "app/sponsors/whySponsor.jsx", "app/sponsors/sponsorshipTiers.jsx", "app/sponsors/pastSponsors.jsx", "app/sponsors/partnership.jsx", "app/sponsors/page.tsx", "app/sponsors/hero.jsx", "app/sponsors/flagshipEvent.jsx", "app/sponsors/final.jsx", "app/sponsors/credibility.jsx", "components/SplashScreen.jsx", "app/events/page.tsx"  ],
   "exclude": ["node_modules"]
 }
