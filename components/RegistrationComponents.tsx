@@ -127,41 +127,60 @@ export const SuccessView = () => {
 };
 
 // --- 3. HEADER (UPDATED WITH TEAM SIZE) ---
-// --- HEADER ---
 export const FormHeader = () => {
-    const { event, isInternal, toggleInternal, step, totalSteps, teamName, closeForm, members } = useRegistrationContext();
+    // 1. Add handlePrev to the context destructuring
+    const { event, isInternal, toggleInternal, step, totalSteps, teamName, closeForm, members, handlePrev } = useRegistrationContext();
+    
     const filledCount = 1 + members.filter((m: any) => m.name.trim().length > 0).length;
     const isTeamValid = filledCount >= event.teamSize.min && filledCount <= event.teamSize.max;
+
     return (
         <div className="p-6 border-b border-zinc-800 bg-zinc-950">
             <div className="flex justify-between items-start mb-4">
-                <div>
-                    <h2 className="text-xl font-black uppercase text-white tracking-wide">{event.title}</h2>
-                    {step === 0 ? (
-                        <div className="flex items-center gap-2 mt-2">
-                            <span className="text-xs text-zinc-400">Are you from IIEST?</span>
-                            <button
-                                onClick={toggleInternal}
-                                className={`text-xs px-2 py-0.5 rounded border ${isInternal ? 'bg-yellow-500/20 text-yellow-500 border-yellow-500' : 'bg-zinc-800 text-zinc-400 border-zinc-700'}`}
-                            >
-                                {isInternal ? "YES (Internal)" : "NO (External)"}
-                            </button>
-                        </div>
-                    ) : (
-                        <p className="text-yellow-500 font-mono text-sm mt-1">{teamName}</p>
+                <div className="flex items-start gap-3">
+                    {/* --- NEW LOCATION: BACK BUTTON --- */}
+                    {step > 0 && (
+                        <button 
+                            onClick={handlePrev}
+                            className="mt-1 p-1 -ml-2 rounded-full text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+                            aria-label="Go Back"
+                        >
+                            <ChevronLeft size={24} />
+                        </button>
                     )}
-                </div>
-                {/* TEAM SIZE INDICATOR (MOVED HERE) */}
-                <div className="text-right relative mt-3 scale-100">
-                    <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider block">Team Size</span>
-                    <div className={`text-2xl font-mono font-bold leading-none flex items-center justify-end gap-1 ${isTeamValid ? "text-green-500" : "text-red-500"}`}>
-                        <Users size={18} className="mb-1" />
-                        {filledCount}<span className="text-lg text-zinc-600">/{event.teamSize.max}</span>
+
+                    <div>
+                        <h2 className="text-xl font-black uppercase text-white tracking-wide">{event.title}</h2>
+                        {step === 0 ? (
+                            <div className="flex items-center gap-2 mt-2">
+                                <span className="text-xs text-zinc-400">Are you from IIEST?</span>
+                                <button
+                                    onClick={toggleInternal}
+                                    className={`text-xs px-2 py-0.5 rounded border ${isInternal ? 'bg-yellow-500/20 text-yellow-500 border-yellow-500' : 'bg-zinc-800 text-zinc-400 border-zinc-700'}`}
+                                >
+                                    {isInternal ? "YES (Internal)" : "NO (External)"}
+                                </button>
+                            </div>
+                        ) : (
+                            <p className="text-yellow-500 font-mono text-sm mt-1">{teamName}</p>
+                        )}
                     </div>
                 </div>
-                <button onClick={closeForm} className="text-zinc-500 hover:text-white"><X size={24} /></button>
 
+                {/* TEAM SIZE INDICATOR */}
+                <div className="flex items-start gap-4">
+                    <div className="text-right relative mt-3 scale-100">
+                        <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-wider block">Team Size</span>
+                        <div className={`text-2xl font-mono font-bold leading-none flex items-center justify-end gap-1 ${isTeamValid ? "text-green-500" : "text-red-500"}`}>
+                            <Users size={18} className="mb-1" />
+                            {filledCount}<span className="text-lg text-zinc-600">/{event.teamSize.max}</span>
+                        </div>
+                    </div>
+                    <button onClick={closeForm} className="text-zinc-500 hover:text-white mt-1"><X size={24} /></button>
+                </div>
             </div>
+            
+            {/* PROGRESS BAR */}
             <div className="flex gap-1 h-1 w-full">
                 {Array.from({ length: totalSteps }).map((_, i) => (
                     <div key={i} className={`h-full flex-1 rounded-full transition-colors ${i <= step ? "bg-yellow-500" : "bg-zinc-800"}`} />
@@ -225,22 +244,23 @@ export const StepMember = () => {
 
 // --- 5. FOOTER (UPDATED LAYOUT) ---
 export const FormFooter = () => {
-    const { step, totalSteps, handlePrev, handleNext, handleSubmit, isLoading, members, event, setCaptchaToken } = useRegistrationContext();
+    // Removed handlePrev from destructuring as it is no longer used here
+    const { step, totalSteps, handleNext, handleSubmit, isLoading, members, event, setCaptchaToken } = useRegistrationContext();
 
-    const filledCount = 1 + members.filter(m => m.name.trim().length > 0).length;
+    const filledCount = 1 + members.filter((m: any) => m.name.trim().length > 0).length;
     const isTeamValid = filledCount >= event.teamSize.min && filledCount <= event.teamSize.max;
     const isLastStep = step === totalSteps - 1;
 
     return (
         <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex items-center justify-between h-[88px]">
 
-            {/* LEFT SIDE: CAPTCHA (Only shows if Team Size is GREEN and on Last Step) */}
+            {/* LEFT SIDE: CAPTCHA OR VALIDATION MSG */}
             <div className="flex-1 flex md:mr-0 -mr-20 justify-start">
                 {isLastStep && isTeamValid && (
                     <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="origin-left scale-[0.65] ml-3 sm:scale-90" // Scaled down to fit
+                        className="origin-left scale-[0.65] sm:scale-90"
                     >
                         <HCaptcha
                             sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY || ""}
@@ -250,24 +270,20 @@ export const FormFooter = () => {
                     </motion.div>
                 )}
 
-                {/* Placeholder if Captcha is hidden (optional, keeps layout stable if needed) */}
                 {isLastStep && !isTeamValid && (
-                    <span className="text-xs text-red-500 italic flex items-center h-full">
+                    <span className="text-xs text-red-500 italic flex items-center h-full pl-2">
                         Team size insufficient
                     </span>
                 )}
             </div>
 
-            {/* RIGHT SIDE: BUTTONS */}
-            <div className="flex gap-3 items-center mr-6">
-                {step > 0 && (
-                    <button onClick={handlePrev} className="px-3 py-2 rounded-full border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition-colors">
-                        <ChevronLeft size={20} />
-                    </button>
-                )}
-
+            {/* RIGHT SIDE: ONLY NEXT/SUBMIT BUTTON */}
+            <div className="mr-2">
                 {step < totalSteps - 1 ? (
-                    <button onClick={handleNext} className="flex items-center gap-2 px-6 py-2 bg-white text-black rounded-full font-bold hover:bg-yellow-400 transition-colors">
+                    <button 
+                        onClick={handleNext} 
+                        className="flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full font-bold hover:bg-yellow-400 transition-colors shadow-lg shadow-white/10"
+                    >
                         Next <ChevronRight size={18} />
                     </button>
                 ) : (
@@ -275,8 +291,8 @@ export const FormFooter = () => {
                         whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(234, 179, 8, 0.5)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={handleSubmit}
-                        disabled={isLoading || !isTeamValid} // Disable if team size is red
-                        className="flex items-center gap-2 px-6 py-2 bg-yellow-500 text-black rounded-full font-bold disabled:opacity-50 disabled:shadow-none whitespace-nowrap"
+                        disabled={isLoading || !isTeamValid}
+                        className="flex items-center gap-2 px-8 py-3 bg-yellow-500 text-black rounded-full font-bold disabled:opacity-50 disabled:shadow-none whitespace-nowrap shadow-lg shadow-yellow-500/20"
                     >
                         {isLoading ? "..." : "Register"}
                     </motion.button>
