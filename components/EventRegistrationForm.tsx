@@ -3,15 +3,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { RegistrationProvider } from "../context/RegistrationProvider"; 
 import { useRegistrationContext } from "../context/RegistrationContext";
-import { FormHeader, FormFooter, SuccessView, StepCaptain, StepMember, ErrorNotification } from "./RegistrationComponents"; // Adjust imports
+import { FormHeader, FormFooter, SuccessView, StepCaptain, StepMember, ErrorNotification, StepPayment } from "./RegistrationComponents"; // Adjust imports
 
 // The inner logic that uses the context
 const FormContent = () => {
-  const { isSuccess, step } = useRegistrationContext();
+  const { isSuccess, step,isInternal, members } = useRegistrationContext();
 
   // If success, show the success view
   if (isSuccess) return <SuccessView />;
-
+  const renderStep=()=>{
+    if(step===0) return <StepCaptain />
+    if (step <= members.length) return <StepMember />;
+    if (!isInternal && step > members.length) return <StepPayment />;
+    return null
+  }
   return (
     <div className="bg-zinc-900 border border-zinc-700 w-full max-w-lg rounded-3xl overflow-hidden flex flex-col max-h-[90vh]">
       <ErrorNotification />  
@@ -26,8 +31,7 @@ const FormContent = () => {
             transition={{ duration: 0.2 }}
             className="flex flex-col gap-5"
           >
-            {/* Logic to choose which Step to render */}
-            {step === 0 ? <StepCaptain /> : <StepMember />}
+            {renderStep()}
           </motion.div>
         </AnimatePresence>
       </div>

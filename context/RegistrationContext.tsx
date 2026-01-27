@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 
 // The shape of your context data
 interface RegistrationContextType {
-  // State
+  // --- STATE ---
   step: number;
   totalSteps: number;
   isInternal: boolean;
@@ -12,6 +12,8 @@ interface RegistrationContextType {
   receiptId: string;
   errorMsg: string;
   setErrorMsg: (msg: string) => void;
+  
+  // Data
   teamName: string;
   captain: { name: string; phone: string; roll: string };
   members: Array<{ name: string; phone: string; roll: string }>;
@@ -19,7 +21,14 @@ interface RegistrationContextType {
   minMembers: number;
   captchaToken: string | null;
   setCaptchaToken: (token: string | null) => void;
-  // Actions
+
+  // --- NEW: PAYMENT STATE (Add these 4 lines) ---
+  paymentDetails: { transactionId: string };
+  updatePaymentDetails: (field: string, val: string) => void;
+  paymentFile: File | null;
+  setPaymentFile: (file: File | null) => void;
+
+  // --- ACTIONS ---
   toggleInternal: () => void;
   setTeamName: (val: string) => void;
   updateCaptain: (field: string, val: string) => void;

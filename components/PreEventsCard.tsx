@@ -185,6 +185,7 @@ export default function PreEventsCombined() {
               title: selectedEvent.title,
               backendValue: selectedEvent.backendValue,
               teamSize: selectedEvent.teamSize,
+              ExtFee: selectedEvent.ExtFee || 0
             }}
             onClose={() => setSelectedEvent(null)}
           />
