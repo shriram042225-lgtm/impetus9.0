@@ -23,8 +23,7 @@ interface RegistrationContextType {
   setCaptchaToken: (token: string | null) => void;
 
   // --- NEW: PAYMENT STATE (Add these 4 lines) ---
-  paymentDetails: { transactionId: string };
-  updatePaymentDetails: (field: string, val: string) => void;
+  
   paymentFile: File | null;
   setPaymentFile: (file: File | null) => void;
 

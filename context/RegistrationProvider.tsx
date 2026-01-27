@@ -32,7 +32,6 @@ export const RegistrationProvider = ({ children, event, onClose }: any) => {
   );
 
   // --- 2. NEW PAYMENT STATE ---
-  const [paymentDetails, setPaymentDetails] = useState({ transactionId: "" });
   const [paymentFile, setPaymentFile] = useState<File | null>(null);
 
   // Calculate Total Steps: Captain (1) + Members + Payment (1 if external)
@@ -66,11 +65,6 @@ export const RegistrationProvider = ({ children, event, onClose }: any) => {
     setMembers(newMembers);
   };
 
-  // New: Update Payment Details
-  const updatePaymentDetails = (field: string, val: string) => {
-    setPaymentDetails(prev => ({ ...prev, [field]: val }));
-  };
-
   // --- VALIDATION ---
   const validateStep = (currentStep: number) => {
     setErrorMsg("");
@@ -88,8 +82,6 @@ export const RegistrationProvider = ({ children, event, onClose }: any) => {
     const isPaymentStep = !isInternal && currentStep === (totalSteps - 1);
     
     if (isPaymentStep) {
-        if (!paymentDetails.transactionId.trim()) return "Transaction ID is required.";
-        if (paymentDetails.transactionId.length < 6) return "Invalid Transaction ID.";
         if (!paymentFile) return "Please upload the payment screenshot.";
         return null;
     }
@@ -191,8 +183,6 @@ export const RegistrationProvider = ({ children, event, onClose }: any) => {
         // Append JSON strings for complex objects
         formData.append("teamMembers", JSON.stringify(validMembers));
         
-        // Append Payment Details
-        formData.append("transactionId", paymentDetails.transactionId);
         if (paymentFile) {
             formData.append("paymentScreenshot", paymentFile);
         }
@@ -291,9 +281,7 @@ export const RegistrationProvider = ({ children, event, onClose }: any) => {
     <RegistrationContext.Provider value={{
       step, totalSteps, isInternal, isLoading, isSuccess, receiptId, errorMsg, setErrorMsg,
       teamName, captain, members, event, minMembers, captchaToken, setCaptchaToken,
-      
-      // New Payment Values exposed to Context
-      paymentDetails, updatePaymentDetails, paymentFile, setPaymentFile,
+       paymentFile, setPaymentFile,
 
       toggleInternal: () => {
         setIsInternal(!isInternal);

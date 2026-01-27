@@ -1,7 +1,5 @@
 // data/events.js
 
-import { register } from "module";
-
 export const eventsData = {
   preEvents:{
     title: "Pre-Events",
