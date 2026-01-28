@@ -27,9 +27,9 @@ export const teamsData: TeamsData = {
           name: "Akshat Gupta",
           phone: "+91 7548071485",
           post: "Coordinator",
-          imgname: "team/akshat_spt.jpeg",
-          email: "",
-          link: "",
+          imgname: "teamimages/akshat gupta.jpeg",
+          email: "akshatgupta1003@gmail.com",
+          link: "https://www.linkedin.com/in/akshat-gupta-816a422a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         },
         {
           name: "Akash",
@@ -65,8 +65,8 @@ export const teamsData: TeamsData = {
           name: "Varun Gautam",
           phone: "+91 9368145959",
           post: "Lead",
-          imgname: "team/varunIMG.jpeg",
-          email: "",
+          imgname: "teamimages/varun gautam.jpeg",
+          email: "varungautam081@gmail.com",
           link: "https://in.linkedin.com/in/varun-gautam-1205012a9"
         },
         {
@@ -83,6 +83,79 @@ export const teamsData: TeamsData = {
       teamName: "Event Management Team",
       slug: "events",
       members: [
+        {
+          name: "Debjit Maity",
+          phone: "8167025227",
+          post: "Lead",
+          imgname: "teamimages/Debjit Maity.jpg",
+          email: "maitydebjit27022003@gmail.com",
+          link: "https://www.linkedin.com/in/debjit-maity-398069262?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        },
+        {
+          name: "Dibya Jyoti Das",
+          phone: "7699249687",
+          post: "Lead",
+          imgname: "teamimages/DIBYA_JYOTI_DAS.jpg",
+          email: "2022meb098.dibya@students.iiests.ac.in",
+          link: "https://www.linkedin.com/in/dibya-jyoti-das-049473289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        },
+        {
+          name: "Nabadisha Chattopadhyay",
+          phone: "",
+          post: "Lead",
+          imgname: "",
+          email: "",
+          link: ""
+        },
+        {
+          name: "Diptayan Mondal ",
+          phone: "6290131020",
+          post: "Lead",
+          imgname: "teamimages/DIPTAYAN.png",
+          email: "2022meb009.diptayan@students.iiests.ac.in",
+          link: "http://www.linkedin.com/in/diptayan-mondal-947923287"
+        },
+        {
+          name: "Diethozo jabez Vizo",
+          phone: "",
+          post: "Lead",
+          imgname: "",
+          email: "",
+          link: ""
+        },
+        {
+          name: "Shivansh Kumar",
+          phone: "",
+          post: "Lead",
+          imgname: "",
+          email: "",
+          link: ""
+        },
+        {
+          name: "Hariram Murmu",
+          phone: "",
+          post: "Lead",
+          imgname: "",
+          email: "",
+          link: ""
+        },
+        {
+          name: "Debolina Das",
+          phone: "7003574001",
+          post: "Lead",
+          imgname: "teamimages/DEBOLINA.jpg",
+          email: "2022meb029.debolina@students.iiests.ac.in",
+          link: ""
+        },
+        {
+          name: "Sreejani Mukherjee",
+          phone: "7044442412",
+          post: "Lead",
+          imgname: "Sreejani.jpg",
+          email: "2022meb008.sreejani@students.iiests.ac.in",
+          link: "https://www.linkedin.com/in/sreejani-mukherjee-01539a2b8"
+        }
+        
 
       ]
     },
@@ -104,6 +177,14 @@ export const teamsData: TeamsData = {
       teamName: "Content & Design Team",
       slug: "design",
       members: [
+        {
+          name: "Arunabh Bagchi",
+          phone: "6232089966",
+          post: "Lead",
+          imgname: "",
+          email: "2022meb066.arunabh@students.iiests.ac.in",
+          link: "https://www.linkedin.com/in/arunabh-bagchi-94412025b"
+        },
       ]
     },
     {
@@ -128,6 +209,14 @@ export const teamsData: TeamsData = {
       teamName: "Industry Academia Meet Team",
       slug: "iam",
       members: [
+        {
+          name: "Saketh Manchu",
+          phone: "9381457448",
+          post: "Lead",
+          imgname: "teamimages/Manchu Saketh.JPG",
+          email: "manchusaketh123@gmail.com",
+          link: "https://www.linkedin.com/in/manchu-venkata-sai-saketh-60b756256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        },
       ]
     },
     {

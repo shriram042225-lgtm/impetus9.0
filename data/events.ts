@@ -18,7 +18,7 @@ export const eventsData = {
         deadline: "2026-02-11T23:59:00",
         ExtFee: 200,
         prizepool:"1k",
-        coordinators: ["Shiva Kumar","Pranay Dey"],
+        coordinators: ["Shiva Kumar (9390480217)","Pranay Dey (7864875402)"],
         rulebook:"https://docs.google.com/document/d/1203Zxw_HThQ6alSSpbCekO-8H-kpERpx/edit",
       },
       {
@@ -34,7 +34,7 @@ export const eventsData = {
         prizepool:"1k",
         teamSize: { min: 1, max: 1 }, 
         deadline: "2026-02-11T23:59:00",
-        coordinators: ["Somaditya Mondal","Aman Wankhede"],
+        coordinators: ["Somaditya Mondal (7797754924)","Aman Wankhede (7448171318)"],
         rulebook:"https://docs.google.com/document/d/1rp2kqOr9_7DYyY1sXmhqtS8eGJG7QenC/edit",
       },
       {
@@ -49,7 +49,7 @@ export const eventsData = {
         teamSize: { min: 1, max: 1 },
         deadline: "2026-02-11T23:59:00",
         prizepool:"3k",
-        coordinators:["Ayush Dutta","Anshuman Mondal"],
+        coordinators:["Ayush Dutta (8972851567)","Anshuman Mondal (9064662805)"],
         rulebook:"https://docs.google.com/document/d/1xGcYjoA6Ld-Eu6A3_RaO7jhuuSaWua6U/edit#heading=h.vos4j9dhnkvm"
       }]
   },
@@ -69,7 +69,7 @@ export const eventsData = {
         teamSize: { min: 2, max: 4 }, 
         deadline: "2026-02-11T23:59:00",
         prizepool:"8k",
-        coordinators:["Ayush Dutta","Mansi Mehra "],
+        coordinators:["Ayush Dutta (8972851567)","Mansi Mehra (9368550521)"],
         rulebook:"https://docs.google.com/document/d/1OodHk_IKRBqI3oAwfPnMR2uQHVW8RZoC/edit"
       },
       {
@@ -84,7 +84,7 @@ export const eventsData = {
         teamSize: { min: 1, max: 1 }, 
         deadline: "2026-02-11T23:59:00",
         prizepool:"8k",
-        coordinators:["Bikram Pal","Agniva Hazra"],
+        coordinators:["Bikram Pal (6296991941)","Agniva Hazra (9749424075)"],
         rulebook:"https://docs.google.com/document/d/1NEzUHBHEtcsrFd-XYl53OT9gEuJiEQf3/edit?usp=drive_web&ouid=109625681489688709828&rtpof=true"
       },
       {
@@ -99,7 +99,7 @@ export const eventsData = {
         teamSize: { min: 3, max: 5 },
         deadline: "2026-02-11T23:59:00",
         prizepool:"8k",
-        coordinators:["Jitendra Kumar","Shubhankar Ghosh"],
+        coordinators:["Jitendra Kumar","Shubhankar Ghosh (9883080373)"],
         rulebook:"https://drive.google.com/drive/folders/1zWKtyxiivzYcm2Il1VSJ0Ndo-Dd6Cfif"
       },
       {
@@ -114,7 +114,7 @@ export const eventsData = {
         teamSize: { min: 3, max: 5 },
         deadline: "2026-02-11T23:59:00",
         prizepool:"8k",
-        coordinators:["Sudheshna Hazra","Avishek Pal"],
+        coordinators:["Sudheshna Hazra (7583980171)","Avishek Pal ("],
         rulebook:"https://docs.google.com/document/d/1J-iglj7Nrc3UmcpIUt3DQ4GnX88CHFRw/edit#heading=h.6l1oeuz5t97r"
       }
     ]
@@ -135,7 +135,7 @@ export const eventsData = {
         teamSize: { min: 5, max: 5 },
         deadline: "2026-02-12T23:59:00",
         prizepool:"10k",
-        coordinators:["Shiva Kumar","Aman Wankhede"],
+        coordinators:["Shiva Kumar (9390480217)","Aman Wankhede (7448171318)"],
         rulebook:"https://docs.google.com/document/d/1RTxp3ur6SOXH-x23uiAoalO2ZzmpdpzF/edit?rtpof=true"
       },
       {
@@ -150,7 +150,7 @@ export const eventsData = {
         teamSize: { min: 1, max: 2 },
         deadline: "2026-02-12T23:59:00",
         prizepool:"8k",
-        coordinators:["Pranay Dey","Ayush Dutta"],
+        coordinators:["Pranay Dey","Ayush Dutta (8972851567)"],
         rulebook:"https://docs.google.com/document/d/12RHMaaITQwxB21wDuYBsosyZKaWUFxHT/edit?rtpof=true&tab=t.0"
       },
       {
@@ -165,7 +165,7 @@ export const eventsData = {
         teamSize: { min: 2, max: 4 },
         deadline: "2026-02-12T23:59:00",
         prizepool:"10k",
-        coordinators:["Rohan Vikas Kudturkar","Swayam Gupta "],
+        coordinators:["Rohan Vikas Kudturkar (9321234034)","Swayam Gupta (7985873384) "],
         rulebook:"https://docs.google.com/document/d/1vnuBAW8poSmPbbzMvjV2009DwGr8WrN_/edit?rtpof=true"
       },
       {
@@ -180,7 +180,7 @@ export const eventsData = {
         teamSize: { min: 1, max: 2 },
         deadline: "2026-02-12T23:59:00",
         prizepool:"40k",
-        coordinators:["Ayush Dutta","Bontha Likith"],
+        coordinators:["Ayush Dutta (8972851567)","Bontha Likith (8074677491)"],
         rulebook:"https://docs.google.com/document/d/1Z3CeUfFkVz5dsk4oRuMcPg8mlkFmjOou/edit?rtpof=true"
       },
       {
@@ -195,7 +195,7 @@ export const eventsData = {
         teamSize: { min: 2, max: 4 },
         deadline: "2026-02-12T23:59:00",
         prizepool:"8k",
-        coordinators:["Soumyaditya Mandal","Prakar Mishra"],
+        coordinators:["Soumyaditya Mandal (7797754924)","Prakar Mishra (8910137219)"],
         rulebook:"https://docs.google.com/document/d/1WCDlxY1dQ3jDqZFQdNxYGNoHyFqZmlix/edit"
       }
     ]
